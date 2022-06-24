@@ -46,11 +46,11 @@ export function Test(){
   
   return (
     <div className="App">
-      <p>{velocityX}</p>
-      <p>{velocityY}</p>
-      <p>{rigidbodyX}</p>
-      <p>{rigidbodyY}</p>
-      <p>{rigidbodyZ}</p>
+      <p> Velocity X: {velocityX}</p>
+      <p> Velocity Y: {velocityY}</p>
+      <p> rigidbody X: {rigidbodyX}</p>
+      <p> rigidbody Y: {rigidbodyY}</p>
+      <p> rigidbody Z: {rigidbodyZ}</p>
     </div>
   );
 }
