@@ -20,17 +20,26 @@ export const db = getDatabase(app);
 export function Test(){
   const [velocityX, setVelocityX] = useState([]);
   const [velocityY, setVelocityY] = useState([]);
+  const [rigidbodyX, setRigidbodyX] = useState([]);
+  const [rigidbodyY, setRigidbodyY] = useState([]);
+  const [rigidbodyZ, setRigidbodyZ] = useState([]);
 
   useEffect(() => {
-    const testio = ref(db, 'Body')
-    onValue(testio, (data) =>{
-      const data1 = data.child('/Look/velocityX').val();
-      const data2 = data.child('/Look/velocityY').val();
+    const dbData = ref(db, 'Body')
+    onValue(dbData, (data) =>{
+      const velocityXData = data.child('/Look/velocityX').val();
+      const velocityYData = data.child('/Look/velocityY').val();
+      const rigidbodyXData = data.child('/Position/rigidbodyX').val();
+      const rigidbodyYData = data.child('/Position/rigidbodyY').val();
+      const rigidbodyZData = data.child('/Position/rigidbodyZ').val();
         if(data !== velocityX||data !== velocityY){
-          setVelocityX(data1)
-          setVelocityY(data2)
+          setVelocityX(velocityXData)
+          setVelocityY(velocityYData)
+          setRigidbodyX(rigidbodyXData)
+          setRigidbodyY(rigidbodyYData)
+          setRigidbodyZ(rigidbodyZData)
 
-          console.log("data "+data1)
+          console.log("data "+velocityXData)
         }
     }) 
   }, [velocityX, velocityY]);
@@ -39,6 +48,9 @@ export function Test(){
     <div className="App">
       <p>{velocityX}</p>
       <p>{velocityY}</p>
+      <p>{rigidbodyX}</p>
+      <p>{rigidbodyY}</p>
+      <p>{rigidbodyZ}</p>
     </div>
   );
 }
