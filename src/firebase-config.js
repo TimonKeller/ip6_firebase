@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import {ref, getDatabase, onValue} from '@firebase/database';
 import {useState, useEffect} from 'react';
+import Card from '@mui/material/Card';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,6 +24,15 @@ export function Test(){
   const [rigidbodyX, setRigidbodyX] = useState([]);
   const [rigidbodyY, setRigidbodyY] = useState([]);
   const [rigidbodyZ, setRigidbodyZ] = useState([]);
+  const [drawerPositionX, setDrawerPositionX] = useState([]);
+  const [drawerPositionZ, setDrawerPositionZ] = useState([]);
+  const [heckKlappeRotationX, setHeckKlappeRotationX] = useState([]);
+  const [heckKlappeRotationY, setHeckKlappeRotationY] = useState([]);
+  const [heckKlappeRotationZ, setHeckKlappeRotationZ] = useState([]);
+  const [klappeRotationX, setKlappeRotationX] = useState([]);
+  const [klappeRotationY, setKlappeRotationY] = useState([]);
+  const [klappeRotationZ, setKlappeRotationZ] = useState([]);
+
 
   useEffect(() => {
     const dbData = ref(db, 'Body')
@@ -32,25 +42,152 @@ export function Test(){
       const rigidbodyXData = data.child('/Position/rigidbodyX').val();
       const rigidbodyYData = data.child('/Position/rigidbodyY').val();
       const rigidbodyZData = data.child('/Position/rigidbodyZ').val();
+      const drawerPositionX = data.child('/Animation/drawerPositionX').val();
+      const drawerPositionZ = data.child('/Animation/drawerPositionZ').val();
+      const heckKlappeRotationX = data.child('/Animation/heckKlappeRotationX').val();
+      const heckKlappeRotationY = data.child('/Animation/heckKlappeRotationY').val();
+      const heckKlappeRotationZ = data.child('/Animation/heckKlappeRotationZ').val();
+      const klappeRotationX = data.child('/Animation/klappeRotationX').val();
+      const klappeRotationY = data.child('/Animation/klappeRotationY').val();
+      const klappeRotationZ = data.child('/Animation/klappeRotationZ').val();
+
         if(data !== velocityX||data !== velocityY){
           setVelocityX(velocityXData)
           setVelocityY(velocityYData)
           setRigidbodyX(rigidbodyXData)
           setRigidbodyY(rigidbodyYData)
           setRigidbodyZ(rigidbodyZData)
-
-          console.log("data "+velocityXData)
+          setDrawerPositionX(drawerPositionX)
+          setDrawerPositionZ(drawerPositionZ)
+          setHeckKlappeRotationX(heckKlappeRotationX)
+          setHeckKlappeRotationY(heckKlappeRotationY)
+          setHeckKlappeRotationZ(heckKlappeRotationZ)
+          setKlappeRotationX(klappeRotationX)
+          setKlappeRotationY(klappeRotationY)
+          setKlappeRotationZ(klappeRotationZ)
+          
+          console.log("data "+ drawerPositionZ)
         }
     }) 
   }, [velocityX, velocityY]);
   
   return (
-    <div className="App">
-      <p> Velocity X: {velocityX}</p>
-      <p> Velocity Y: {velocityY}</p>
-      <p> rigidbody X: {rigidbodyX}</p>
-      <p> rigidbody Y: {rigidbodyY}</p>
-      <p> rigidbody Z: {rigidbodyZ}</p>
+    <div>
+      <h1 className='unterteilung'> Look </h1>
+      <div className="cards">
+        <Card className='card'>
+          <h1 className='cardTitle'>
+            Velocity X 
+          </h1> 
+          <p className='cardText'>
+            {velocityX}
+          </p>
+        </Card>
+        <Card className='card'> 
+          <h1 className='cardTitle'>
+            Velocity Y
+          </h1> 
+          <p className='cardText'>
+            {velocityY}
+          </p>
+        </Card>
+      </div>
+      <h1 className='unterteilung'> Position </h1>
+      <div className='cards'>
+         <Card className='card'> 
+        <h1 className='cardTitle'>
+          rigidbody X
+        </h1>
+        <p className='cardText'>
+          {rigidbodyX}
+        </p>  
+      </Card>
+      <Card className='card'> 
+        <h1 className='cardTitle'> 
+          rigidbody Y 
+        </h1>
+        <p className='cardText'>
+          {rigidbodyY}
+        </p>
+      </Card>
+      <Card className='card'> 
+        <h1 className='cardTitle'> 
+          rigidbody Z 
+        </h1> 
+        <p className='cardText'>
+          {rigidbodyZ}
+        </p>
+      </Card>
+      </div>
+      <h1 className='unterteilung'> Animationen </h1>
+      <div className='cards'>
+         <Card className='card'> 
+        <h1 className='cardTitle'>
+          drawerPosition X
+        </h1>
+        <p className='cardText'>
+          {drawerPositionX}
+        </p>  
+      </Card>
+      <Card className='card'> 
+        <h1 className='cardTitle'> 
+          drawerPosition Z
+        </h1>
+        <p className='cardText'>
+          {drawerPositionZ}
+        </p>
+      </Card>
+      <Card className='card'> 
+        <h1 className='cardTitle'> 
+          heckKlappeRotation X 
+        </h1> 
+        <p className='cardText'>
+          {heckKlappeRotationX}
+        </p>
+      </Card>
+      <Card className='card'> 
+        <h1 className='cardTitle'> 
+          heckKlappeRotation Y 
+        </h1> 
+        <p className='cardText'>
+          {heckKlappeRotationY}
+        </p>
+      </Card>
+      <Card className='card'> 
+        <h1 className='cardTitle'> 
+          heckKlappeRotation Z 
+        </h1> 
+        <p className='cardText'>
+          {heckKlappeRotationZ}
+        </p>
+      </Card>
+      </div>
+      <div className='cards'>
+        <Card className='card'> 
+          <h1 className='cardTitle'> 
+            klappeRotation X 
+          </h1> 
+          <p className='cardText'>
+            {klappeRotationX}
+          </p>
+        </Card>
+        <Card className='card'> 
+          <h1 className='cardTitle'> 
+            klappeRotation Y 
+          </h1> 
+          <p className='cardText'>
+            {klappeRotationY}
+          </p>
+        </Card>
+        <Card className='card'> 
+          <h1 className='cardTitle'> 
+            klappeRotation Z 
+          </h1> 
+          <p className='cardText'>
+            {klappeRotationZ}
+          </p>
+        </Card>
+      </div>
     </div>
   );
 }
