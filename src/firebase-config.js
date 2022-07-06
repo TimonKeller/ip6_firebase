@@ -137,30 +137,33 @@ export function Test(){
           {drawerPositionZ}
         </p>
       </Card>
-      <Card className='card'> 
-        <h1 className='cardTitle'> 
-          heckKlappeRotation X 
-        </h1> 
-        <p className='cardText'>
-          {heckKlappeRotationX}
-        </p>
-      </Card>
-      <Card className='card'> 
-        <h1 className='cardTitle'> 
-          heckKlappeRotation Y 
-        </h1> 
-        <p className='cardText'>
-          {heckKlappeRotationY}
-        </p>
-      </Card>
-      <Card className='card'> 
-        <h1 className='cardTitle'> 
-          heckKlappeRotation Z 
-        </h1> 
-        <p className='cardText'>
-          {heckKlappeRotationZ}
-        </p>
-      </Card>
+      
+      </div>
+      <div className='cards'> 
+        <Card className='card'> 
+          <h1 className='cardTitle'> 
+            heckKlappeRotation X 
+          </h1> 
+          <p className='cardText'>
+            {heckKlappeRotationX}
+          </p>
+        </Card>
+        <Card className='card'> 
+          <h1 className='cardTitle'> 
+            heckKlappeRotation Y 
+          </h1> 
+          <p className='cardText'>
+            {heckKlappeRotationY}
+          </p>
+        </Card>
+        <Card className='card'> 
+          <h1 className='cardTitle'> 
+            heckKlappeRotation Z 
+          </h1> 
+          <p className='cardText'>
+            {heckKlappeRotationZ}
+          </p>
+        </Card>
       </div>
       <div className='cards'>
         <Card className='card'> 
