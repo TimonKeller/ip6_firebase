@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {ref, getDatabase, onValue} from '@firebase/database';
+import {ref, getDatabase, onValue, set} from '@firebase/database';
 import {useState, useEffect} from 'react';
 import Card from '@mui/material/Card';
 
@@ -70,9 +70,24 @@ export function Test(){
         }
     }) 
   }, [velocityX, velocityY]);
+
+  const input = document.getElementById('input');
+
+  if(input){
+    input.addEventListener('input', pushData);
+  };
+
+  function pushData(){
+    set(ref(db, "Body/Test"),{
+      Test: input.value
+    });
+    console.log(input.value)
+  }
   
   return (
     <div>
+      <h1 className='unterteilung'> Read Data </h1>
+      <br/>
       <h1 className='unterteilung'> Look </h1>
       <div className="cards">
         <Card className='card'>
@@ -189,6 +204,18 @@ export function Test(){
           <p className='cardText'>
             {klappeRotationZ}
           </p>
+        </Card>
+      </div>
+      <h1 className='unterteilung'> Write Data </h1>
+      
+      <br/>
+      <h1 className='unterteilung'> Look </h1>
+      <div className="cards">
+        <Card className='card'>
+          <h1 className='cardTitle'>
+            Velocity X 
+          </h1> 
+          <input id='input' type="text" className='cardText' placeholder='text'/>
         </Card>
       </div>
     </div>
