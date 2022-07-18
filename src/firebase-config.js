@@ -33,7 +33,6 @@ export function Test(){
   const [klappeRotationY, setKlappeRotationY] = useState([]);
   const [klappeRotationZ, setKlappeRotationZ] = useState([]);
 
-
   useEffect(() => {
     const dbData = ref(db, 'Body')
     onValue(dbData, (data) =>{
@@ -51,7 +50,7 @@ export function Test(){
       const klappeRotationY = data.child('/Animation/klappeRotationY').val();
       const klappeRotationZ = data.child('/Animation/klappeRotationZ').val();
 
-        if(data !== velocityX||data !== velocityY){
+        if(data !== velocityX || data !== velocityY){
           setVelocityX(velocityXData)
           setVelocityY(velocityYData)
           setRigidbodyX(rigidbodyXData)
@@ -65,7 +64,6 @@ export function Test(){
           setKlappeRotationX(klappeRotationX)
           setKlappeRotationY(klappeRotationY)
           setKlappeRotationZ(klappeRotationZ)
-          
           console.log("data "+ drawerPositionZ)
         }
     }) 
@@ -152,7 +150,6 @@ export function Test(){
           {drawerPositionZ}
         </p>
       </Card>
-      
       </div>
       <div className='cards'> 
         <Card className='card'> 
@@ -207,7 +204,6 @@ export function Test(){
         </Card>
       </div>
       <h1 className='unterteilung'> Write Data </h1>
-      
       <br/>
       <h1 className='unterteilung'> Look </h1>
       <div className="cards">
